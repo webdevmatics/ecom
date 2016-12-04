@@ -1,0 +1,146 @@
+.top-bar, .top-bar ul {
+    background-color: rgba(29, 119, 13, 0.88);
+    border-bottom: 5px solid rgba(2, 103, 40, 0.38);;
+}
+
+.top-bar {
+    padding: 10px 100px;
+}
+
+.top-bar a {
+    color: white;
+}
+
+.top-bar a:hover {
+    text-decoration: underline;
+}
+
+/*HERO SECTION*/
+section.hero {
+    height: 490px;
+    background: #3d3d3d url(../img/mc-mickey1.jpg) center center no-repeat;
+    background-size: cover;
+}
+
+.hero h2 {
+    color: white;
+}
+
+/*product card*/
+
+.item-wrapper {
+    padding: 20px;
+    border: 2px solid #efefef;
+    border-radius: 7px;
+    margin-top: 40px;
+}
+
+.item-wrapper:hover .img-wrapper img {
+    -webkit-filter: grayscale(0);
+}
+
+.item-wrapper:hover .img-wrapper .add-to-cart {
+    bottom: 0;
+}
+
+.img-wrapper {
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.img-wrapper .add-to-cart {
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+    background-color: #333;
+    padding: 16px 8px;
+    bottom: -50px;
+    position: absolute;
+    z-index: 2;
+    color: #fff;
+    margin: 0 auto;
+    border: none;
+    box-shadow: none;
+}
+
+.img-wrapper .add-to-cart:hover {
+    background-color: #008cba;
+}
+
+.img-wrapper img {
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+    /*-webkit-filter: grayscale(1);*/
+    width: 100%;
+}
+
+h3 {
+    font-size: 22px;
+}
+
+h5 {
+    font-weight: bold;
+}
+
+p {
+    color: #888;
+    font-size: 13px;
+    margin-bottom: 0;
+}
+
+/*Footer*/
+
+.full-width {
+    max-width: 1400px;
+}
+
+.footer {
+    background-color: #3c4d58;
+    padding: 2rem 4rem;
+    text-align: center;
+    color: #fff;
+}
+
+.footer i {
+    font-size: 100px;
+}
+
+.footer h4 {
+    color: #fff;
+    font-size: 1em;
+    font-weight: 400;
+    text-transform: uppercase;
+    margin-top: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.footer p, .footer a {
+    font-weight: 300;
+    font-size: .8em;
+    color: #fff;
+}
+
+@media only screen and (min-width: 40.063em) {
+    .footer .columns:nth-child(n+2) {
+        border-left: 1px solid #b3b3b3;
+        min-height: 280px;
+    }
+}
+
+.footer-links {
+    list-style-type: none;
+}
+
+.footer-links li {
+    margin-top: .5em;
+}
+
+.price-tag {
+    font-size: 46px;
+    color: rgba(53, 105, 28, 0.77);
+}
+
+.brand-title {
+    font-size: 30px;
+    padding-top: 10px;
+}
