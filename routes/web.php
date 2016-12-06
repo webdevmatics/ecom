@@ -15,3 +15,14 @@
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/shirts', 'HomeController@shirts')->name('shirts');
 Route::get('/shirt', 'HomeController@shirt')->name('shirt');
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
+
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
+    Route::get('/', function () {
+        return view('admin.index');
+    })->name('admin.index');
+});
