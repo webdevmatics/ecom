@@ -25,103 +25,38 @@
 
     <!-- Latest SHirts -->
     <div class="row">
-        <div class="small-3 columns">
-            <div class="item-wrapper">
-                <div class="img-wrapper">
-                    <a class="button expanded add-to-cart">
-                        Add to Cart
+        @forelse($shirts->chunk(4) as $chunk)
+            @foreach($chunk as $shirt)
+            <div class="small-3 medium-3 large-3 columns">
+                <div class="item-wrapper">
+                    <div class="img-wrapper">
+                        <a class="button expanded add-to-cart">
+                            Add to Cart
+                        </a>
+                        <a href="#">
+                            <img src="{{url('images',$shirt->image)}}"/>
+                        </a>
+                    </div>
+                    <a href="{{route('shirt')}}">
+                        <h3>
+                            {{$shirt->name}}
+                        </h3>
                     </a>
-                    <a href="#">
-                        <img src="http://i.imgur.com/Mcw06Yt.png"/>
-                    </a>
+                    <h5>
+                        ${{$shirt->price}}
+
+                    </h5>
+                    <p>
+                        {{$shirt->description}}
+                    </p>
                 </div>
-                <a href="{{route('shirt')}}">
-                    <h3>
-                        Kickin with Kraken Tee
-                    </h3>
-                </a>
-                <h5>
-                    $19.99
-                </h5>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin posuere sem enim, accumsan convallis
-                    risus semper.
-                </p>
             </div>
-        </div>
-        <div class="small-3 columns">
-            <div class="item-wrapper">
-                <div class="img-wrapper">
-                    <a class="button expanded add-to-cart">
-                        Add to Cart
-                    </a>
-                    <a href="#">
-                        <img src="http://i.imgur.com/Mcw06Yt.png"/>
-                    </a>
-                </div>
-                <a href="#">
-                    <h3>
-                        Kickin with Kraken Tee
-                    </h3>
-                </a>
-                <h5>
-                    $19.99
-                </h5>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin posuere sem enim, accumsan convallis
-                    risus semper.
-                </p>
-            </div>
-        </div>
-        <div class="small-3 columns">
-            <div class="item-wrapper">
-                <div class="img-wrapper">
-                    <a class="button expanded add-to-cart">
-                        Add to Cart
-                    </a>
-                    <a href="#">
-                        <img src="http://i.imgur.com/Mcw06Yt.png"/>
-                    </a>
-                </div>
-                <a href="#">
-                    <h3>
-                        Kickin with Kraken Tee
-                    </h3>
-                </a>
-                <h5>
-                    $19.99
-                </h5>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin posuere sem enim, accumsan convallis
-                    risus semper.
-                </p>
-            </div>
-        </div>
-        <div class="small-3 columns">
-            <div class="item-wrapper">
-                <div class="img-wrapper">
-                    <a class="button expanded add-to-cart">
-                        Add to Cart
-                    </a>
-                    <a href="#">
-                        <img src="http://i.imgur.com/Mcw06Yt.png"/>
-                    </a>
-                </div>
-                <a href="#">
-                    <h3>
-                        Kickin with Kraken Tee
-                    </h3>
-                </a>
-                <h5>
-                    $19.99
-                </h5>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin posuere sem enim, accumsan convallis
-                    risus semper.
-                </p>
-            </div>
-        </div>
+            @endforeach
+        @empty
+            <h3>No shirts</h3>
+        @endforelse
     </div>
+
     <!-- Footer -->
     <br>
 @endsection

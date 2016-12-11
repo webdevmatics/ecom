@@ -21,7 +21,7 @@
             <div class="row text-center">
                 <div class="col-md-10 col-md-offset-1">
                     <div class="content-box-large">
-                        @yield('content')
+                            @yield('content')
                     </div>
                 </div>
             </div>
