@@ -88,6 +88,7 @@ class CartController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Cart::remove($id);
+        return back();
     }
 }
