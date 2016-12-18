@@ -70,7 +70,7 @@
                 <li><a href="https://github.com/webdevmatics">GitHub</a></li>
                 <li><a href="#">Facebook</a></li>
                 <li><a href="https://twitter.com/webdevmatics">Twitter</a></li>
-                <ul>
+            </ul>
         </div>
     </div>
 </footer>
