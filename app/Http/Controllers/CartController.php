@@ -76,7 +76,9 @@ class CartController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Cart::update($id,$request->qty);
+//        dd(Cart::content());
+//        dd($request->all());
+        Cart::update($id,['qty'=>$request->qty,"options"=>['size'=>$request->size]]);
         return back();
     }
 
@@ -88,6 +90,7 @@ class CartController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Cart::remove($id);
+        return back();
     }
 }
