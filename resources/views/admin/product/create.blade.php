@@ -6,11 +6,11 @@
 
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            {!! Form::open(['route' => 'product.store', 'method' => 'POST', 'files' => true]) !!}
+            {!! Form::open(['route' => 'product.store', 'method' => 'POST', 'files' => true, 'data-parsley-validate'=>'']) !!}
 
             <div class="form-group">
                 {{ Form::label('name', 'Name') }}
-                {{ Form::text('name', null, array('class' => 'form-control')) }}
+                {{ Form::text('name', null, array('class' => 'form-control','required'=>'','minlength'=>'5')) }}
             </div>
 
             <div class="form-group">
