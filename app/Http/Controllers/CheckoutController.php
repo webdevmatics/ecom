@@ -2,20 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Order;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class CheckoutController extends Controller
 {
-    public function step1()
-    {
-        if (Auth::check()) {
-            return redirect()->route('checkout.shipping');
-        }
-
-        return redirect('login');
-    }
+//    public function step1()
+//    {
+//        if (Auth::check()) {
+//            return redirect()->route('checkout.shipping');
+//        }
+//
+//        return redirect('login');
+//    }
 
     public function shipping()
     {
@@ -47,7 +48,11 @@ class CheckoutController extends Controller
         } catch (\Stripe\Error\Card $e) {
             // The card has been declined
         }
+      //Create the order
+       Order::createOrder();
 
+        //redirect user to some page
+        return "Order completed";
 
     }
 
