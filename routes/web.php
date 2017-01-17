@@ -23,12 +23,17 @@ Route::resource('/cart', 'CartController');
 Route::get('/cart/add-item/{id}', 'CartController@addItem')->name('cart.addItem');
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth','admin']], function () {
+    Route::post('toggledeliver/{orderId}', 'OrderController@toggledeliver')->name('toggle.deliver');
+
     Route::get('/', function () {
         return view('admin.index');
     })->name('admin.index');
 
     Route::resource('product','ProductsController');
     Route::resource('category','CategoriesController');
+
+    Route::get('orders/{type?}', 'OrderController@Orders');
+
 });
 Route::resource('address','AddressController');
 
@@ -40,3 +45,10 @@ Route::group(['middleware' => 'auth'], function () {
 
 Route::get('payment','CheckoutController@payment')->name('checkout.payment');
 Route::post('store-payment','CheckoutController@storePayment')->name('payment.store');
+
+
+Route::get('test',function(){
+   $orders=App\Order::find(2);
+   $items=$orders->orderItems;
+dd($items);
+});
