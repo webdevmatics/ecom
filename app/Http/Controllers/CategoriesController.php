@@ -91,6 +91,9 @@ class CategoriesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category=Category::find($id);
+        $category->products()->delete();
+        $category->delete();
+        return back();
     }
 }
