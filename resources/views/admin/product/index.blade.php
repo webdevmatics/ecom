@@ -9,6 +9,10 @@
     <li>
         <h4>Name of product:{{$product->name}}</h4>
         <h4>Category:{{count($product->category)?$product->category->name:"N/A"}}</h4>
+
+      <a href="{{route('product.edit',$product->id)}}" class="btn btn-primary btn-sm ">Edit Product</a>
+      <br>
+
         <form action="{{route('product.destroy',$product->id)}}"  method="POST">
            {{csrf_field()}}
            {{method_field('DELETE')}}
