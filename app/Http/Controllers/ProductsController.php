@@ -126,4 +126,24 @@ class ProductsController extends Controller
         Product::destroy($id);
         return back();
     }
+
+    public function uploadImages($productId,Request $request)
+    {
+
+            
+        $product=Product::find($productId);
+
+        //        image upload
+        $image=$request->file('file');
+
+        if($image){
+            $imageName=time(). $image->getClientOriginalName();
+            $image->move('images',$imageName);
+            $imagePath= "/images/$imageName";
+            $product->images()->create(['image_path'=>$imagePath]);
+        }
+
+        return "done";
+        // Product::create($formInput);
+    }
 }

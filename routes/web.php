@@ -29,6 +29,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth','admin']], function (
         return view('admin.index');
     })->name('admin.index');
 
+    Route::post('product/image-upload/{productId}','ProductsController@uploadImages');
     Route::resource('product','ProductsController');
     Route::resource('category','CategoriesController');
 
