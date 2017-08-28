@@ -21,7 +21,7 @@
             <a href="{{route('home')}}">
                 <i class="fa fa-home fa-lg" aria-hidden="true">
                 </i>
-                MC-MyKey Shirts
+                MC-MyKey Shirtsasdas
             </a>
         </h4>
     </div>
