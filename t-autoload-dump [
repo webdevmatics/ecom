@@ -1,0 +1,37 @@
+[1mdiff --git a/composer.json b/composer.json[m
+[1mindex cbe57d9..6d6a645 100644[m
+[1m--- a/composer.json[m
+[1m+++ b/composer.json[m
+[36m@@ -5,8 +5,8 @@[m
+     "license": "MIT",[m
+     "type": "project",[m
+     "require": {[m
+[31m-        "php": ">=5.6.4",[m
+[31m-        "laravel/framework": "5.4.*",[m
+[32m+[m[32m        "php": ">=7.0.0",[m
+[32m+[m[32m        "laravel/framework": "5.5.*",[m
+         "laravelcollective/html": "^5.3.0",[m
+         "gloudemans/shoppingcart": "^2.2",[m
+         "stripe/stripe-php": "4.*",[m
+[36m@@ -15,7 +15,9 @@[m
+     "require-dev": {[m
+         "fzaninotto/faker": "~1.4",[m
+         "mockery/mockery": "0.9.*",[m
+[31m-        "phpunit/phpunit": "~5.7",[m
+[32m+[m[32m        "phpunit/phpunit": "~6.0",[m
+[32m+[m[32m        "filp/whoops": "~2.0",[m
+[32m+[m[41m        [m
+         "symfony/css-selector": "3.1.*",[m
+         "symfony/dom-crawler": "3.1.*"[m
+     },[m
+[36m@@ -43,6 +45,10 @@[m
+             "Illuminate\\Foundation\\ComposerScripts::postInstall",[m
+             "php artisan optimize"[m
+         ],[m
+[32m+[m[32m        "post-autoload-dump": [[m
+[32m+[m[32m            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",[m
+[32m+[m[32m            "@php artisan package:discover"[m
+[32m+[m[32m        ],[m
+         "post-update-cmd": [[m
+             "Illuminate\\Foundation\\ComposerScripts::postUpdate",[m
+             "php artisan optimize"[m
