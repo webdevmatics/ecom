@@ -1,7 +1,10 @@
 {
     "name": "laravel/laravel",
     "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "keywords": [
+        "framework",
+        "laravel"
+    ],
     "license": "MIT",
     "type": "project",
     "require": {
@@ -10,14 +13,14 @@
         "laravelcollective/html": "^5.3.0",
         "gloudemans/shoppingcart": "^2.2",
         "stripe/stripe-php": "4.*",
-        "laravel/tinker": "^1.0"
+        "laravel/tinker": "^1.0",
+        "tcg/voyager": "^1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
         "phpunit/phpunit": "~6.0",
         "filp/whoops": "~2.0",
-        
         "symfony/css-selector": "3.1.*",
         "symfony/dom-crawler": "3.1.*"
     },
@@ -56,5 +59,11 @@
     },
     "config": {
         "preferred-install": "dist"
+    },
+    "repositories": {
+        "hooks": {
+            "type": "composer",
+            "url": "https://larapack.io"
+        }
     }
 }

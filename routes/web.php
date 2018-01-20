@@ -53,3 +53,7 @@ Route::get('test',function(){
    $items=$orders->orderItems;
 dd($items);
 });
+
+Route::group(['prefix' => 'backend'], function () {
+    Voyager::routes();
+});

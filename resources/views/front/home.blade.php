@@ -34,7 +34,7 @@
                             Add to Cart
                         </a>
                         <a href="#">
-                            <img src="{{url('images',$shirt->image)}}"/>
+                            <img src='{{asset("storage/$shirt->image")}}'/>
                         </a>
                     </div>
                     <a href="{{route('shirt')}}">
