@@ -4,54 +4,70 @@
     <meta charset="utf-8"/>
     <meta http-equiv="x-ua-compatible" content="ie=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <title>
         @yield('title','Mickey Shirts')
     </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.1.1/motion-ui.min.css
+">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <link rel="stylesheet" href="{{asset('dist/css/foundation.css')}}"/>
     <link rel="stylesheet" href="{{asset('dist/css/app.css')}}"/>
+    {{--<link rel="stylesheet" href="{{asset('css/app.css')}}"/>--}}
     <link href="http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet">
 
 
 </head>
 <body>
-<div class="top-bar">
-    <div style="color:white" class="top-bar-left">
-        <h4 class="brand-title">
-            <a href="{{route('home')}}">
-                <i class="fa fa-home fa-lg" aria-hidden="true">
-                </i>
-                MC-MyKey Shirts
-            </a>
-        </h4>
-    </div>
-    <div class="top-bar-right">
-        <ol class="menu">
-            <li>
-                <a href="{{route('shirts')}}">
-                    SHIRTS
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    CONTACT
-                </a>
-            </li>
-            <li>
-                <a href="{{route('cart.index')}}">
-                    <i class="fa fa-shopping-cart fa-2x" aria-hidden="true">
+<div  id="app">
+
+    <div class="top-bar">
+        <div style="color:white" class="top-bar-left">
+            <h4 class="brand-title">
+                <a href="{{route('home')}}">
+                    <i class="fa fa-home fa-lg" aria-hidden="true">
                     </i>
-                    CART
-                    <span class="alert badge">
-                               {{Cart::count()}}
-                            </span>
+                    MC-MyKey Shirts
                 </a>
-            </li>
-        </ol>
+            </h4>
+        </div>
+        <div class="top-bar-right">
+            <ol class="menu">
+                <li>
+                    <a href="{{route('shirts')}}">
+                        SHIRTS
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        CONTACT
+                    </a>
+                </li>
+                <li>
+                    <cart-count  :cartcount="itemCount" > </cart-count>
+                </li>
+            </ol>
+        </div>
+    </div>
+    <div>
+        @yield('content')
+    </div>
+
+
+    <div>
+        <div class="reveal" id="checkoutDetailModal" data-reveal>
+            <cart-detail :cart="cart"></cart-detail>
+            <button class="close-button" data-close aria-label="Close modal" type="button">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
     </div>
 </div>
 
-@yield('content')
+
 <footer class="footer">
     <div class="row full-width">
         <div class="small-12 medium-4 large-4 columns">
@@ -81,5 +97,10 @@
     Stripe.setPublishableKey('pk_test_GryUHqXe48kgNc75J2BovmeN');
 </script>
 <script src="{{asset('dist/js/app.js')}}"></script>
+<script src="{{asset('js/app.js')}}"></script>
+<script src="{{asset('dist/js/vendor/foundation.js')}}"></script>
+<script>
+    $(document).foundation();
+</script>
 </body>
 </html>
