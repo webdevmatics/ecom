@@ -23,11 +23,6 @@
         </h2>
     </div>
 
-    <div class="row">
-        <cart-detail :cart="cart" :carttotal="cartTotal"></cart-detail>
-    </div>
-
-
     <!-- Latest SHirts -->
     <div class="row">
         @forelse($shirts->chunk(4) as $chunk)

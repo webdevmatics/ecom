@@ -10,7 +10,6 @@
                     <th>Price</th>
                     <th>Qty</th>
                     <th>size</th>
-                    <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -18,16 +17,13 @@
                     <td>{{cartItem.name}}</td>
                     <td>{{cartItem.price}}</td>
                     <td>
-                        <button @click="reduceQty(cartItem)" class="button alert tiny">-</button> <strong>{{cartItem.qty}}</strong> <button @click="increaseQty(cartItem)" class="button success tiny">+</button>
+                        <button @click="removeFromCart(cartItem)" class="button alert tiny">-</button> <strong>{{cartItem.qty}}</strong> <button @click="addToCart(cartItem)" class="button success tiny">+</button>
 
                     </td>
                     <td>
                           {{cartItem.size}}
 
                     </td>
-                        <td>
-                            <button @click="removeItem(cartItem)" class="button alert">x</button>
-                        </td>
 
                 </tr>
 
@@ -36,7 +32,7 @@
                     <td>
                         Grand Total: {{carttotal}}
                 </td>
-                    <td>Items: {{ cart.count}}
+                    <td>Items: {{ totalitems}}
 
 
                 </td>
@@ -55,24 +51,15 @@
 
 <script>
     export default {
-        props:['cart','carttotal'],
+        props:['cart','carttotal','totalitems'],
 
-        mounted() {
-            console.log('Component mounted.')
-        },
         methods:{
-            removeItem(item){
-
+            removeFromCart(item){
                 bus.$emit('remove-from-cart',item);
 
-
             },
-            reduceQty(item){
-                bus.$emit('reduce-qty',item);
-
-            },
-            increaseQty(item){
-                bus.$emit('increase-qty',item);
+            addToCart(item){
+                bus.$emit('added-to-cart',item);
 
             }
 

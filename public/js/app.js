@@ -1105,29 +1105,19 @@ Vue.component('cart-detail', __webpack_require__(48));
 var app = new Vue({
     el: '#app',
     data: {
-        itemCount: 0,
-        matchingProductIndex: 0,
-        matchingProduct: null,
         cart: []
     },
     created: function created() {
         var _this = this;
 
         this.getCart();
+
         bus.$on('added-to-cart', function (product) {
             _this.addToCart(product);
         });
 
         bus.$on('remove-from-cart', function (product) {
             _this.removeFromCart(product);
-        });
-
-        bus.$on('increase-qty', function (product) {
-            _this.increaseQty(product);
-        });
-
-        bus.$on('reduce-qty', function (product) {
-            _this.decreaseQty(product);
         });
     },
 
@@ -1152,57 +1142,31 @@ var app = new Vue({
             }
         },
         addToCart: function addToCart(product) {
-            this.getCart();
-            product.qty = 1;
+            var matchingProductIndex = this.cart.findIndex(function (item) {
+                return item.id === product.id;
+            });
 
-            var increased = this.increaseQty(product);
-
-            if (increased) {
-                return;
+            if (matchingProductIndex > -1) {
+                this.cart[matchingProductIndex].qty++;
+            } else {
+                product.qty = 1;
+                this.cart.push(product);
             }
-            this.cart.push(product);
 
             localStorage.setItem('cart', JSON.stringify(this.cart));
         },
         removeFromCart: function removeFromCart(product) {
-            this.cart = _.filter(this.cart, function (eachItem) {
-                if (eachItem.id !== product.id) {
-                    return true;
-                }
+            var matchingProductIndex = this.cart.findIndex(function (item) {
+                return item.id == product.id;
             });
+
+            if (this.cart[matchingProductIndex].qty <= 1) {
+                this.cart.splice(matchingProductIndex, 1);
+            } else {
+                this.cart[matchingProductIndex].qty--;
+            }
 
             localStorage.setItem('cart', JSON.stringify(this.cart));
-        },
-        increaseQty: function increaseQty(product) {
-            this.matchingProductIndex = _.findIndex(this.cart, function (item) {
-                return item.id == product.id;
-            });
-
-            if (this.matchingProductIndex > -1) {
-                this.cart[this.matchingProductIndex].qty++;
-                localStorage.setItem('cart', JSON.stringify(this.cart));
-
-                return true;
-            }
-            return false;
-        },
-        decreaseQty: function decreaseQty(product) {
-            this.matchingProductIndex = _.findIndex(this.cart, function (item) {
-                return item.id == product.id;
-            });
-
-            if (this.matchingProductIndex > -1) {
-                this.matchingProduct = this.cart[this.matchingProductIndex];
-                if (this.matchingProduct.qty <= 1) {
-                    return this.removeFromCart(product);
-                }
-                var quantity = this.cart[this.matchingProductIndex].qty - 1;
-                this.$set(this.cart[this.matchingProductIndex], 'qty', quantity);
-                localStorage.setItem('cart', JSON.stringify(this.cart));
-
-                return true;
-            }
-            return false;
         }
     }
 });
@@ -43596,28 +43560,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['cart', 'carttotal'],
-
-    mounted: function mounted() {
-        console.log('Component mounted.');
-    },
+    props: ['cart', 'carttotal', 'totalitems'],
 
     methods: {
-        removeItem: function removeItem(item) {
-
+        removeFromCart: function removeFromCart(item) {
             bus.$emit('remove-from-cart', item);
         },
-        reduceQty: function reduceQty(item) {
-            bus.$emit('reduce-qty', item);
-        },
-        increaseQty: function increaseQty(item) {
-            bus.$emit('increase-qty', item);
+        addToCart: function addToCart(item) {
+            bus.$emit('added-to-cart', item);
         }
     }
 });
@@ -43651,7 +43603,7 @@ var render = function() {
                       staticClass: "button alert tiny",
                       on: {
                         click: function($event) {
-                          _vm.reduceQty(cartItem)
+                          _vm.removeFromCart(cartItem)
                         }
                       }
                     },
@@ -43666,7 +43618,7 @@ var render = function() {
                       staticClass: "button success tiny",
                       on: {
                         click: function($event) {
-                          _vm.increaseQty(cartItem)
+                          _vm.addToCart(cartItem)
                         }
                       }
                     },
@@ -43679,21 +43631,6 @@ var render = function() {
                     "\n                      " +
                       _vm._s(cartItem.size) +
                       "\n\n                "
-                  )
-                ]),
-                _vm._v(" "),
-                _c("td", [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "button alert",
-                      on: {
-                        click: function($event) {
-                          _vm.removeItem(cartItem)
-                        }
-                      }
-                    },
-                    [_vm._v("x")]
                   )
                 ])
               ])
@@ -43712,7 +43649,7 @@ var render = function() {
               _vm._v(" "),
               _c("td", [
                 _vm._v(
-                  "Items: " + _vm._s(_vm.cart.count) + "\n\n\n            "
+                  "Items: " + _vm._s(_vm.totalitems) + "\n\n\n            "
                 )
               ]),
               _vm._v(" "),
@@ -43742,9 +43679,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Qty")]),
         _vm._v(" "),
-        _c("th", [_vm._v("size")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Action")])
+        _c("th", [_vm._v("size")])
       ])
     ])
   }
