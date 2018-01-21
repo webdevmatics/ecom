@@ -8,7 +8,7 @@
                 <tr>
                     <th>Name</th>
                     <th>Price</th>
-                    <!--<th>qty</th>-->
+                    <th>Qty</th>
                     <th>size</th>
                     <th>Action</th>
                 </tr>
@@ -17,20 +17,16 @@
                     <tr v-for="cartItem in cart">
                     <td>{{cartItem.name}}</td>
                     <td>{{cartItem.price}}</td>
-                    <!--<td width="50px">-->
-                        <!--{{cartItem.qty}}-->
-
-
-                    <!--</td>-->
                     <td>
-                        <div >
-                          {{cartItem.size}}
+                        <button @click="reduceQty(cartItem)" class="button alert tiny">-</button> <strong>{{cartItem.qty}}</strong> <button @click="increaseQty(cartItem)" class="button success tiny">+</button>
 
-                           </div>
+                    </td>
+                    <td>
+                          {{cartItem.size}}
 
                     </td>
                         <td>
-                            <button @click="removeItem(cartItem)" class="button">x</button>
+                            <button @click="removeItem(cartItem)" class="button alert">x</button>
                         </td>
 
                 </tr>
@@ -38,11 +34,10 @@
                 <tr>
                     <td></td>
                     <td>
-                        Tax: 22 <br>
-                        Sub Total: 22 <br>
-                        Grand Total: 22
+                        Grand Total: {{carttotal}}
                 </td>
                     <td>Items: {{ cart.count}}
+
 
                 </td>
                     <td></td>
@@ -60,7 +55,7 @@
 
 <script>
     export default {
-        props:['cart'],
+        props:['cart','carttotal'],
 
         mounted() {
             console.log('Component mounted.')
@@ -71,7 +66,17 @@
                 bus.$emit('remove-from-cart',item);
 
 
+            },
+            reduceQty(item){
+                bus.$emit('reduce-qty',item);
+
+            },
+            increaseQty(item){
+                bus.$emit('increase-qty',item);
+
             }
+
+
         }
     }
 </script>

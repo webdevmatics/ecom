@@ -24,7 +24,7 @@
     </div>
 
     <div class="row">
-        <cart-detail :cart="cart"></cart-detail>
+        <cart-detail :cart="cart" :carttotal="cartTotal"></cart-detail>
     </div>
 
 

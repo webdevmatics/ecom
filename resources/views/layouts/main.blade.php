@@ -47,7 +47,7 @@
                     </a>
                 </li>
                 <li>
-                    <cart-count  :cartcount="itemCount" > </cart-count>
+                    <cart-count  :cartcount="totalItems" > </cart-count>
                 </li>
             </ol>
         </div>
@@ -59,7 +59,7 @@
 
     <div>
         <div class="reveal" id="checkoutDetailModal" data-reveal>
-            <cart-detail :cart="cart"></cart-detail>
+            <cart-detail :cart="cart" :carttotal="cartTotal"></cart-detail>
             <button class="close-button" data-close aria-label="Close modal" type="button">
                 <span aria-hidden="true">&times;</span>
             </button>
