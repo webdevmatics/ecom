@@ -19,7 +19,7 @@
                     $ {{ shirt.price }}
                     </h5>
                 <p>
-                    {{ shirt.description }}
+                    {{htmlToText(shirt.description)  }}
 
                 </p>
             </div>
@@ -36,6 +36,12 @@
         methods:{
             addToCart(){
                 bus.$emit('added-to-cart',this.shirt);
+            },
+            htmlToText(html) {
+                var tag = document.createElement('div');
+                tag.innerHTML = html;
+
+                return tag.innerText;
             }
         }
     }
