@@ -30,7 +30,7 @@
             <div class="small-3 medium-3 large-3 columns">
 
                 <product :shirt="{{$shirt}}"
-                         shirtlink="{{route('shirt')}}"
+                         shirtlink="{{route('shirt',$shirt->id)}}"
                          shirtimagepath='{{asset("storage/$shirt->image")}}'
                 >
                 </product>

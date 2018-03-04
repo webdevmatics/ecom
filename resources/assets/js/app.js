@@ -3,6 +3,7 @@
  * include Vue and Vue Resource. This gives a great starting point for
  * building robust, powerful web applications using Vue and Laravel.
  */
+import VueStarRating  from 'vue-star-rating'
 
 require('./bootstrap');
 
@@ -20,6 +21,9 @@ Vue.component('example', require('./components/Example.vue'));
 Vue.component('product', require('./components/Product.vue'));
 Vue.component('cart-count', require('./components/CartCount.vue'));
 Vue.component('cart-detail', require('./components/CartDetail.vue'));
+Vue.component('review-form', require('./components/ReviewForm.vue'));
+
+Vue.component('star-rating', VueStarRating);
 
 const app = new Vue({
     el: '#app',

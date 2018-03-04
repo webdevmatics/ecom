@@ -14,7 +14,7 @@
 
 Route::get('/', 'FrontController@index')->name('home');
 Route::get('/shirts', 'FrontController@shirts')->name('shirts');
-Route::get('/shirt', 'FrontController@shirt')->name('shirt');
+Route::get('/shirts/{product}', 'FrontController@shirt')->name('shirt');
 Auth::routes();
 Route::get('/logout', 'Auth\LoginController@logout');
 
@@ -41,18 +41,13 @@ Route::resource('address','AddressController');
 //Route::get('checkout','CheckoutController@step1');
 Route::group(['middleware' => 'auth'], function () {
     Route::get('shipping-info','CheckoutController@shipping')->name('checkout.shipping');
+    Route::resource('review','ProductReviewController');
 });
 
 
 Route::get('payment','CheckoutController@payment')->name('checkout.payment');
 Route::post('store-payment','CheckoutController@storePayment')->name('payment.store');
 
-
-Route::get('test',function(){
-   $orders=App\Order::find(2);
-   $items=$orders->orderItems;
-dd($items);
-});
 
 Route::group(['prefix' => 'backend'], function () {
     Voyager::routes();

@@ -20,8 +20,9 @@ class FrontController extends Controller
         return view('front.shirts',compact('shirts'));
     }
 
-    public function shirt()
+    public function shirt(Product $product)
     {
-        return view('front.shirt');
+
+        return view('front.shirt',compact('product'));
     }
 }
