@@ -144,3 +144,9 @@ p {
     font-size: 30px;
     padding-top: 10px;
 }
+
+.floating{
+    right:1%;
+    bottom:1%;
+    position: fixed;
+}

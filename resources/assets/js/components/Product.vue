@@ -6,6 +6,10 @@
                     <button @click="addToCart"  class="button expanded add-to-cart">
                         Add to Cart
                     </button>
+
+                    <button @click="addToCompare"  class="button expanded add-to-compare">
+                        Add to Compare
+                    </button>
                     <a href="#">
                         <img :src='shirtimagepath' />
                     </a>
@@ -36,6 +40,9 @@
         methods:{
             addToCart(){
                 bus.$emit('added-to-cart',this.shirt);
+            },
+            addToCompare(){
+                bus.$emit('added-to-compare',this.shirt);
             },
             htmlToText(html) {
                 var tag = document.createElement('div');

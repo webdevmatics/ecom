@@ -17,5 +17,7 @@
         @empty
         <h3>No shirts</h3>
        @endforelse
+
+        <compare></compare>
     </div>
 @endsection
