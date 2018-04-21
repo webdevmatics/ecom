@@ -36,6 +36,11 @@
                                 <td>Size</td>
                                 <td v-for="product in compareItems">{{product.size}}</td>
                             </tr>
+
+                            <tr>
+                                <td>Action</td>
+                                <td v-for="product in compareItems"><button class="button" @click="removeItem(product)">Remove</button></td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -63,8 +68,27 @@
                 tag.innerHTML = html;
 
                 return tag.innerText;
+            },
+
+            removeItem(item){
+                const index= this.compareItems.findIndex((compareItem)=>{
+                    return compareItem.id===item.id;
+                });
+
+                this.compareItems.splice(index,1);
+                localStorage.setItem('compareitems',JSON.stringify(this.compareItems));
+
             }
+
         },
+        mounted(){
+            let items=localStorage.getItem('compareitems');
+            if(items){
+                this.compareItems=JSON.parse(items);
+            }
+
+        },
+
         created(){
             bus.$on('added-to-compare',(shirt)=>{
                 console.log('on emit shirt',shirt);
