@@ -19,6 +19,7 @@
     "vue": "^2.5.7"
   },
   "dependencies": {
-    "vue-star-rating": "^1.5.1"
+    "vue-star-rating": "^1.5.1",
+    "vuetify": "^1.1.8"
   }
 }

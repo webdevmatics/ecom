@@ -11,12 +11,16 @@
     <title>
         @yield('title','Mickey Shirts')
     </title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.1.1/motion-ui.min.css
+
+    <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.1.1/motion-ui.min.css
 ">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <link rel="stylesheet" href="{{asset('dist/css/foundation.css')}}"/>
     <link rel="stylesheet" href="{{asset('dist/css/app.css')}}"/>
-    {{--<link rel="stylesheet" href="{{asset('css/app.css')}}"/>--}}
+    <link rel="stylesheet" href="{{asset('css/app.css')}}"/>
     <link href="http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet">
 
 
@@ -24,34 +28,61 @@
 <body>
 <div  id="app">
 
-    <div class="top-bar">
-        <div style="color:white" class="top-bar-left">
-            <h4 class="brand-title">
-                <a href="{{route('home')}}">
-                    <i class="fa fa-home fa-lg" aria-hidden="true">
-                    </i>
-                    MC-MyKey Shirts
-                </a>
-            </h4>
-        </div>
-        <div class="top-bar-right">
-            <ol class="menu">
-                <li>
-                    <a href="{{route('shirts')}}">
-                        SHIRTS
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        CONTACT
-                    </a>
-                </li>
-                <li>
-                    <cart-count  :cartcount="totalItems" > </cart-count>
-                </li>
-            </ol>
-        </div>
-    </div>
+    <v-navigation-drawer
+            absolute
+            v-model="drawer"
+            temporary
+    >
+        <v-list dense>
+            <v-list-tile @click="">
+                <v-list-tile-action>
+                    <v-icon>home</v-icon>
+                </v-list-tile-action>
+                <v-list-tile-content>
+                    <v-list-tile-title>Home</v-list-tile-title>
+                </v-list-tile-content>
+            </v-list-tile>
+            <v-list-tile @click="">
+                <v-list-tile-action>
+                    <v-icon>contact_mail</v-icon>
+                </v-list-tile-action>
+                <v-list-tile-content>
+                    <v-list-tile-title>Contact</v-list-tile-title>
+                </v-list-tile-content>
+            </v-list-tile>
+        </v-list>
+    </v-navigation-drawer>
+
+
+    <navbar></navbar>
+    {{--<div class="top-bar">--}}
+        {{--<div style="color:white" class="top-bar-left">--}}
+            {{--<h4 class="brand-title">--}}
+                {{--<a href="{{route('home')}}">--}}
+                    {{--<i class="fa fa-home fa-lg" aria-hidden="true">--}}
+                    {{--</i>--}}
+                    {{--MC-MyKey Shirts--}}
+                {{--</a>--}}
+            {{--</h4>--}}
+        {{--</div>--}}
+        {{--<div class="top-bar-right">--}}
+            {{--<ol class="menu">--}}
+                {{--<li>--}}
+                    {{--<a href="{{route('shirts')}}">--}}
+                        {{--SHIRTS--}}
+                    {{--</a>--}}
+                {{--</li>--}}
+                {{--<li>--}}
+                    {{--<a href="#">--}}
+                        {{--CONTACT--}}
+                    {{--</a>--}}
+                {{--</li>--}}
+                {{--<li>--}}
+                    {{--<cart-count  :cartcount="totalItems" > </cart-count>--}}
+                {{--</li>--}}
+            {{--</ol>--}}
+        {{--</div>--}}
+    {{--</div>--}}
     <div>
         @yield('content')
     </div>
