@@ -29,6 +29,7 @@ Vue.component('cart-detail', require('./components/CartDetail.vue'));
 Vue.component('review-form', require('./components/ReviewForm.vue'));
 Vue.component('compare', require('./components/Compare.vue'));
 Vue.component('navbar', require('./components/Navbar.vue'));
+Vue.component('hero', require('./components/Hero.vue'));
 
 Vue.component('star-rating', VueStarRating);
 

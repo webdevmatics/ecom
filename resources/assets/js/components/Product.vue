@@ -1,35 +1,37 @@
 <template>
-    <div class="container">
-        <div class="row">
-            <div class="item-wrapper">
-                <div class="img-wrapper">
-                    <button @click="addToCart"  class="button expanded add-to-cart">
-                        Add to Cart
-                    </button>
+            <v-card >
+                <v-card-media
+                        :src='shirtimagepath'
+                        height="250px"
+                ></v-card-media>
 
-                    <button @click="addToCompare"  class="button expanded add-to-compare">
-                        Add to Compare
-                    </button>
-                    <a href="#">
-                        <img :src='shirtimagepath' />
-                    </a>
-                </div>
-                <a :href="shirtlink">
-                    <h3>
-                        {{shirt.name}}
-                        </h3>
-                </a>
-                <h5>
-                    $ {{ shirt.price }}
-                    </h5>
-                <p>
-                    {{htmlToText(shirt.description)  }}
+                <v-card-title  primary-title>
+                    <div>
 
-                </p>
-            </div>
-        </div>
-    </div>
+                            <h3 class="headline mb-0">
+                                <a :href="shirtlink">
+                                {{shirt.name}} | {{shirt.price}}
+                                </a>
+
+                            </h3>
+
+                        <div>
+                            {{htmlToText(shirt.description)  }}
+                        </div>
+                    </div>
+                </v-card-title>
+
+                <v-card-actions>
+                    <v-btn @click="addToCart" flat color="success">Add to Cart</v-btn>
+                    <v-btn  @click="addToCompare" flat color="info">Add to compare</v-btn>
+                </v-card-actions>
+            </v-card>
 </template>
+
+
+
+
+
 
 <script>
     export default {
