@@ -31,12 +31,12 @@
 
                 <product :shirt="{{$shirt}}"
                          shirtlink="{{route('shirt',$shirt->id)}}"
-                         shirtimagepath='{{asset("storage/$shirt->image")}}'
+                         shirtimagepath='{{asset("images/$shirt->image")}}'
                 >
                 </product>
 
             </div>
-            @endforeach
+            @endforeach 
         @empty
             <h3>No shirts</h3>
         @endforelse
