@@ -39,7 +39,7 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        Category::create($request->all());
+        Category::create(['name'=>$request->name,'slug'=>str_slug($request->name)]);
         return back();
     }
 

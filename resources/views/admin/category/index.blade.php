@@ -39,8 +39,9 @@
                     <div class="form-group">
                         {{ Form::label('name', 'Title') }}
                         {{ Form::text('name', null, array('class' => 'form-control')) }}
-                    </div>
 
+                    </div>
+                    
 
                 </div>
                 <div class="modal-footer">
