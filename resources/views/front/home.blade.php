@@ -31,7 +31,7 @@
 
                 <product :shirt="{{$shirt}}"
                          shirtlink="{{route('shirt',$shirt->id)}}"
-                         shirtimagepath='{{asset("images/$shirt->image")}}'
+                         shirtimagepath='{{asset("storage/$shirt->image")}}'
                 >
                 </product>
 
