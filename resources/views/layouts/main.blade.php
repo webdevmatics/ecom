@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <link rel="stylesheet" href="{{asset('dist/css/foundation.css')}}"/>
     <link rel="stylesheet" href="{{asset('dist/css/app.css')}}"/>
-    {{--<link rel="stylesheet" href="{{asset('css/app.css')}}"/>--}}
+    <link rel="stylesheet" href="{{asset('css/app.css')}}"/>
     <link href="http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet">
 
 
@@ -102,6 +102,11 @@
 <script src="{{asset('dist/js/vendor/foundation.js')}}"></script>
 <script>
     $(document).foundation();
+
+    $('.carousel').carousel({
+      interval: 1000
+    })
+
 </script>
 </body>
 </html>
